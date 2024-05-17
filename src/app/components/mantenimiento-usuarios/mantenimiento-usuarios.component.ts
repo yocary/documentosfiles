@@ -19,8 +19,8 @@ export class MantenimientoUsuariosComponent {
   };
 
   solicitudes = [
-    { tipoSolicitud: 'Vacaciones', adminAprobo: 'Admin1', usuario: 'Usuario1', fecha: '2024-05-01', justificacion: 'Vacaciones anuales', opciones: '' },
-    { tipoSolicitud: 'Permiso Personal', adminAprobo: 'Admin2', usuario: 'Usuario2', fecha: '2024-05-02', justificacion: 'Permiso por asuntos personales', opciones: '' },
+    { tipoSolicitud: 'Vacaciones', adminAprobo: 'Admin1', usuario: 'Usuario1', fecha: '01/04/2024', justificacion: 'Vacaciones', opciones: '' },
+    { tipoSolicitud: 'Licencia de cumpleaños', adminAprobo: 'Admin2', usuario: 'Usuario2', fecha: '15/05/2024', justificacion: 'Cumpleaños', opciones: '' },
     // Más solicitudes aquí
   ];
 
