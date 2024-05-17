@@ -1,0 +1,96 @@
+<div class="user-maintenance-container">
+    <div class="title-bar">
+        <h2 *ngIf="!showAddEmployeeForm && !showSolicitudesList">Mantenimiento de Usuarios</h2>
+      </div>
+      
+    <div *ngIf="!showAddEmployeeForm && !showSolicitudesList" class="options">
+      <button mat-raised-button color="primary" (click)="showAddEmployeeForm = true">
+        Agregar Empleado
+      </button>
+      <button mat-raised-button color="primary" (click)="showSolicitudesList = true">
+        Solicitudes
+      </button>
+      <button mat-raised-button color="warn">Regresar</button>
+    </div>
+  
+    <div *ngIf="showAddEmployeeForm" class="form-container">
+      <h2>AGREGAR EMPLEADOS</h2>
+      <form (ngSubmit)="onAddEmployee()">
+        <mat-form-field>
+            <mat-label>No. DPI</mat-label>
+            <input matInput [(ngModel)]="employee.dpi" name="dpi" required>
+          </mat-form-field>
+        <mat-form-field>
+          <mat-label>Nombre Completo</mat-label>
+          <input matInput [(ngModel)]="employee.fullName" name="fullName" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Área</mat-label>
+          <input matInput [(ngModel)]="employee.area" name="area" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Turno</mat-label>
+          <mat-select [(ngModel)]="employee.shift" name="shift" required>
+            <mat-option value="morning">Mañana</mat-option>
+            <mat-option value="afternoon">Tarde</mat-option>
+            <mat-option value="night">Noche</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Estado</mat-label>
+          <mat-select [(ngModel)]="employee.status" name="status" required>
+            <mat-option value="active">Activo</mat-option>
+            <mat-option value="inactive">Inactivo</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div class="form-buttons">
+          <button mat-raised-button color="primary" type="submit">Agregar</button>
+          <button mat-raised-button color="accent" type="button" (click)="onSaveEmployee()">Guardar</button>
+          <button mat-raised-button color="warn" type="button" (click)="onBack()">Regresar</button>
+        </div>
+      </form>
+    </div>
+  
+    <div *ngIf="showSolicitudesList" class="table-container">
+      <h2>SOLICITUDES LICENCIAS Y VACACIONES</h2>
+      <table mat-table [dataSource]="solicitudes" class="mat-elevation-z8 custom-table">
+        <ng-container matColumnDef="tipoSolicitud">
+          <th mat-header-cell *matHeaderCellDef> Tipo de Solicitud </th>
+          <td mat-cell *matCellDef="let solicitud"> {{solicitud.tipoSolicitud}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="adminAprobo">
+          <th mat-header-cell *matHeaderCellDef> Admin Aprobó </th>
+          <td mat-cell *matCellDef="let solicitud"> {{solicitud.adminAprobo}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="usuario">
+          <th mat-header-cell *matHeaderCellDef> Usuario </th>
+          <td mat-cell *matCellDef="let solicitud"> {{solicitud.usuario}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="fecha">
+          <th mat-header-cell *matHeaderCellDef> Fecha </th>
+          <td mat-cell *matCellDef="let solicitud"> {{solicitud.fecha}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="justificacion">
+          <th mat-header-cell *matHeaderCellDef> Justificación </th>
+          <td mat-cell *matCellDef="let solicitud"> {{solicitud.justificacion}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="opciones">
+          <th mat-header-cell *matHeaderCellDef> Opciones </th>
+          <td mat-cell *matCellDef="let solicitud">
+            <button mat-button (click)="aprobarSolicitud(solicitud)">Aprobar</button>
+            <button mat-button (click)="rechazarSolicitud(solicitud)">Rechazar</button>
+          </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <button mat-raised-button color="warn" (click)="onBack()">Regresar</button>
+    </div>
+  </div>
+  

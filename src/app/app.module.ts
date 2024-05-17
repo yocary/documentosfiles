@@ -1,5 +1,3 @@
-import { GestionDocumentosComponent } from './components/gestion-documentos/gestion-documentos.component';
-
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -18,6 +16,7 @@ import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { MantenimientoUsuariosComponent } from './components/mantenimiento-usuarios/mantenimiento-usuarios.component';
 
 
 
@@ -33,8 +32,7 @@ import { environment } from '../environments/environment';
     ScrollSpyDirective,
     LoginComponent,
 
-
-    GestionDocumentosComponent,
+    MantenimientoUsuariosComponent,
 
   
   ],

@@ -60,38 +60,7 @@ export class LoginComponent implements OnInit {
     }
 
   login(){
-    let post: any = {
-      usuario: this.formCarga.controls['username'].value,
-      contrasenia: this.formCarga.controls['password'].value,
 
-    }
-
-          this.authService.login(post).subscribe(
-            response => {
-              // Autenticación exitosa, redirige a la página principal o a otra vista
-              this.router.navigate(['/documentitos']);
-
-            },
-            error => {
-              // Error en la autenticación, muestra un mensaje de error al usuario
-              console.log('Error de autenticación:', error);
-
-               Swal.fire({
-                title: 'Credenciales Invalidas',
-                text: 'Ingrese nuevamente sus credenciales',
-                icon: 'warning',
-                showCancelButton: false,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'OK'
-                
-              }).then(async (result) => {
-                if(result.isDenied){
-                  this.router.navigate(['/login']);
-                }
-            })
-          }
-          );
     
   }
 
