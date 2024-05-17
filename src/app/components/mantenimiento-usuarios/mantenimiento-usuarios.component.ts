@@ -16,6 +16,7 @@ export class MantenimientoUsuariosComponent {
     dpi: '',
     area: '',
     shift: '',
+    usuario: '',
     status: 'active'
   };
 
@@ -80,6 +81,7 @@ export class MantenimientoUsuariosComponent {
       dpi: '',
       area: '',
       shift: '',
+      usuario: '',
       status: 'active'
     };
   }
