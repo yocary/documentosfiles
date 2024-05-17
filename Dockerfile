@@ -22,9 +22,6 @@ FROM nginx:alpine
 # Copia la salida de la construcción desde la etapa anterior al directorio html de Nginx
 COPY --from=build /app/dist/sdr /usr/share/nginx/html
 
-# Copia el archivo de configuración de Nginx
-COPY nginx.conf /etc/nginx/nginx.conf
-
 # Expone el puerto 80 al mundo exterior
 EXPOSE 80
 
