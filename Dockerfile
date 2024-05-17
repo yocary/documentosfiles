@@ -16,14 +16,20 @@ COPY . .
 # Construye la aplicación Angular en modo producción
 RUN npm run build --prod
 
-# Etapa 2: Servir la aplicación Angular con Nginx
-FROM nginx:alpine
+# Etapa 2: Servir la aplicación Angular con Node.js
+FROM node:14
 
-# Copia la salida de la construcción desde la etapa anterior al directorio html de Nginx
-COPY --from=build /app/dist/sdr /usr/share/nginx/html
+# Establece el directorio de trabajo dentro del contenedor
+WORKDIR /app
 
-# Expone el puerto 80 al mundo exterior
-EXPOSE 80
+# Copia los archivos estáticos generados por la construcción de la aplicación Angular desde la etapa anterior
+COPY --from=build /app/dist/sdr /app
 
-# Inicia Nginx cuando el contenedor arranque
-CMD ["nginx", "-g", "daemon off;"]
+# Instala un servidor http simple para servir la aplicación Angular
+RUN npm install -g http-server
+
+# Expone el puerto 4200 al mundo exterior
+EXPOSE 4200
+
+# Comando para iniciar el servidor http para servir la aplicación Angular en el puerto 4200
+CMD ["http-server", "-p", "4200"]
