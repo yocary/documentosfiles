@@ -5,7 +5,7 @@ import { LoginComponent } from "../components/login/login.component";
 import { MantenimientoUsuariosComponent } from '../components/mantenimiento-usuarios/mantenimiento-usuarios.component';
 
 const routes: Routes = [
-  { path: "", redirectTo: "/login", pathMatch: "full" },
+  { path: "", redirectTo: "/mantenimiento-usuarios", pathMatch: "full" },
 
 
   { path: "mantenimiento-usuarios", component: MantenimientoUsuariosComponent },
