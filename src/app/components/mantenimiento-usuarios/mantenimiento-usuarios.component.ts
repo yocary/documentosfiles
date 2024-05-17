@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 export class MantenimientoUsuariosComponent {
   showAddEmployeeForm: boolean = false;
   showSolicitudesList: boolean = false;
+  showConsultarUsuarioForm: boolean = false;
 
   employee = {
     fullName: '',
@@ -25,7 +26,13 @@ export class MantenimientoUsuariosComponent {
     { tipoSolicitud: 'Licencia de cumpleaños', adminAprobo: 'Admin2', usuario: 'Usuario2', fecha: '15/05/2024', justificacion: 'Cumpleaños', opciones: '' },
   ];
 
+  usuarios = [
+    { usuario: 'mycorona', turno: 'Turno Vespertino', area: 'Ventas', estado: 'Activo' },
+    { usuario: 'pdmelend', turno: 'Turno Diruno', area: 'Informática', estado: 'Inactivo' },
+  ];
+
   displayedColumns: string[] = ['tipoSolicitud', 'adminAprobo', 'usuario', 'fecha', 'justificacion', 'opciones'];
+  displayedUserColumns: string[] = ['nombre', 'turno', 'area', 'estado'];
 
   constructor(private router: Router) { }
 
@@ -63,6 +70,7 @@ export class MantenimientoUsuariosComponent {
   onBack() {
     this.showAddEmployeeForm = false;
     this.showSolicitudesList = false;
+    this.showConsultarUsuarioForm = false;
   }
 
   onBackToLogin() {
