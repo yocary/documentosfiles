@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
@@ -33,9 +34,16 @@ export class MantenimientoUsuariosComponent {
 
   displayedColumns: string[] = ['tipoSolicitud', 'adminAprobo', 'usuario', 'fecha', 'justificacion', 'opciones'];
   displayedUserColumns: string[] = ['nombre', 'turno', 'area', 'estado'];
+  filteredUsuarios = new MatTableDataSource(this.usuarios);
 
-  constructor(private router: Router) { }
-
+  constructor(private router: Router) {
+    this.filteredUsuarios.filterPredicate = (data, filter: string) => {
+      return data.usuario.toLowerCase().includes(filter) || 
+             data.turno.toLowerCase().includes(filter) ||
+             data.area.toLowerCase().includes(filter) ||
+             data.estado.toLowerCase().includes(filter);
+    };
+  }
   onAddEmployee() {
     if (this.employee.fullName && this.employee.dpi && this.employee.area) {
       this.resetForm();
@@ -98,5 +106,10 @@ export class MantenimientoUsuariosComponent {
 
   rechazarSolicitud(solicitud: any) {
     
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+    this.filteredUsuarios.filter = filterValue;
   }
 }
