@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-mantenimiento-usuarios',
@@ -41,6 +42,27 @@ export class MantenimientoUsuariosComponent {
   }
 
   onSaveEmployee() {
+    Swal.fire({
+      title: '¿Está seguro de agregar el empleado?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí',
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.showAddEmployeeForm = false;
+        this.showSolicitudesList = false;
+        Swal.fire(
+          'Guardado',
+          'El empleado ha sido guardado.',
+          'success'
+        );
+      } else {
+        console.log('Operación cancelada');
+      }
+    });
   }
 
   onBack() {
