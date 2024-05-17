@@ -31,14 +31,10 @@ export class MantenimientoUsuariosComponent {
   constructor(private router: Router) { }
 
   onAddEmployee() {
-    // Lógica para agregar empleado
     if (this.employee.fullName && this.employee.dpi && this.employee.area) {
-      console.log('Empleado agregado:', this.employee);
-      alert('Empleado agregado correctamente');
       this.resetForm();
-      this.showAddEmployeeForm = false; // Ocultar el formulario después de agregar
+      this.showAddEmployeeForm = false; 
     } else {
-      alert('Por favor complete todos los campos requeridos');
     }
   }
 
@@ -61,7 +57,6 @@ export class MantenimientoUsuariosComponent {
           'success'
         );
       } else {
-        console.log('Operación cancelada');
       }
     });
   }
