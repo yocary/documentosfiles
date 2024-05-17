@@ -27,8 +27,8 @@ export class MantenimientoUsuariosComponent {
   ];
 
   usuarios = [
-    { usuario: 'mycorona', turno: 'Turno Vespertino', area: 'Ventas', estado: 'Activo' },
-    { usuario: 'pdmelend', turno: 'Turno Diruno', area: 'Informática', estado: 'Inactivo' },
+    { usuario: 'Usuario1', turno: 'Turno Vespertino', area: 'Ventas', estado: 'Activo' },
+    { usuario: 'Usuario2', turno: 'Turno Diruno', area: 'Informática', estado: 'Inactivo' },
   ];
 
   displayedColumns: string[] = ['tipoSolicitud', 'adminAprobo', 'usuario', 'fecha', 'justificacion', 'opciones'];
